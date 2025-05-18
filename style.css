@@ -1,3 +1,7 @@
+/* -------------------------------
+   BASE STYLES & LAYOUT
+--------------------------------*/
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -6,11 +10,19 @@ body {
   color: #f4f4f4;
 }
 
+/* -------------------------------
+   HEADER
+--------------------------------*/
+
 header {
   background: #222;
   padding: 2rem;
   text-align: center;
 }
+
+/* -------------------------------
+   NAVIGATION
+--------------------------------*/
 
 nav ul {
   list-style: none;
@@ -36,11 +48,19 @@ nav ul li a:hover {
   background: #555;
 }
 
+/* -------------------------------
+   SECTION WRAPPER
+--------------------------------*/
+
 section {
   padding: 2rem;
   max-width: 800px;
   margin: auto;
 }
+
+/* -------------------------------
+   FOOTER
+--------------------------------*/
 
 footer {
   text-align: center;
@@ -52,6 +72,10 @@ footer {
   text-shadow: 0 0 4px #6a6a6a33;
 }
 
+/* -------------------------------
+   ANIMATION & TRANSITIONS
+--------------------------------*/
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -62,7 +86,11 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
-/* Live Projects section */
+
+/* -------------------------------
+   LIVE PROJECTS SECTION
+--------------------------------*/
+
 .projects {
   margin: 2rem auto;
   padding: 1rem;
@@ -103,6 +131,10 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+/* -------------------------------
+   TOOLKIT PREVIEW HEADER
+--------------------------------*/
+
 .toolkit-preview {
   background-color: #1e1e1e;
   padding: 2rem;
@@ -118,6 +150,10 @@ footer {
 .toolkit-preview p {
   color: #ccc;
 }
+
+/* -------------------------------
+   TOOLKIT DOWNLOAD BUTTON
+--------------------------------*/
 
 .toolkit-btn {
   display: inline-block;
@@ -141,6 +177,10 @@ footer {
   transform: translateY(-2px) scale(1.05);
 }
 
+/* -------------------------------
+   TOOLKIT GRID LAYOUT
+--------------------------------*/
+
 .toolkit-grid {
   display: grid;
   gap: 2rem;
@@ -148,8 +188,11 @@ footer {
   margin: 4rem auto;
   padding: 0 2rem;
   max-width: 1000px;
-  
 }
+
+/* -------------------------------
+   TOOL STYLING (LEGACY CLASS)
+--------------------------------*/
 
 .tool {
   background-color: #1f1f1f;
@@ -182,13 +225,20 @@ footer {
   font-weight: bold;
 }
 
+/* -------------------------------
+   TOOLKIT ITEM BLOCKS
+--------------------------------*/
+
 .toolkit-item {
   margin-bottom: 32px;
   padding-bottom: 16px;
   border-bottom: 1px solid #333;
 }
 
-/* Mobile Tweaks */
+/* -------------------------------
+   RESPONSIVE DESIGN – MOBILE
+--------------------------------*/
+
 @media (max-width: 600px) {
   .toolkit-item h3 {
     font-size: 1.1rem;
