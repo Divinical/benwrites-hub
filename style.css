@@ -96,14 +96,18 @@ footer {
   content: "🔥";
   font-size: 1.8rem;
   margin-right: 0.5rem;
-  transform: translateY(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #toolkit-section .section-title::before {
   content: "🧰";
   font-size: 1.8rem;
   margin-right: 0.5rem;
-  transform: translateY(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-cards {
@@ -276,7 +280,7 @@ footer {
   }
 
   .section-title {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  flex-direction: row; /* or column if stacked looks better */
+  align-items: center;
+}
 }
