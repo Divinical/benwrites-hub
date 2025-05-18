@@ -1,15 +1,29 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
+  font-family: 'Inter', sans-serif;
+    margin: 0;
   padding: 0;
   background-color: #111;
   color: #f4f4f4;
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+line-height: 1.6;
 }
+:root {
+  --section-padding: 4rem;
+  --section-padding-small: 2rem;
+}
+
+h1, h2, h3, .section-title, .unchained {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 
 header {
   background: #222;
-  padding: 2rem;
   text-align: center;
+  padding: var(--section-padding-small) 2rem;
 }
 
 nav ul {
@@ -37,19 +51,19 @@ nav ul li a:hover {
 }
 
 section {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
+  padding: var(--section-padding) 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 footer {
   text-align: center;
   font-size: 0.85rem;
-  margin-top: 48px;
-  padding: 16px;
   color: #aaa;
   border-top: 1px solid #333;
   text-shadow: 0 0 4px #6a6a6a33;
+  margin-top: var(--section-padding);
+  padding: var(--section-padding-small) 2rem;
 }
 
 .fade-in {
@@ -67,7 +81,7 @@ footer {
   font-size: 1.4rem;
   text-align: center;
   max-width: 800px;
-  margin: 3rem auto 2rem;
+  margin: var(--section-padding) auto;
   color: #ffc14d;
   font-style: italic;
   font-weight: 600;
@@ -350,3 +364,17 @@ footer {
     max-width: 240px;
   }
 }
+body {
+  font-size: 16px;
+}
+
+h1, h2, h3 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.creed {
+  font-size: 1.2rem;
+  padding: 0 1rem;
+}
+
