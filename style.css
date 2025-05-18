@@ -296,17 +296,24 @@ footer {
 }
 
 .toolkit-reveal li {
-  margin: 0.5rem 0;
-  font-size: 1.05rem;
-  padding-left: 1rem;
+  margin: 0.75rem 0;
+  padding-left: 1.75rem;
   position: relative;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #f4f4f4;
 }
 
 .toolkit-reveal li::before {
-  content: "•";
-  color: #ffc14d;
+  content: "";
   position: absolute;
   left: 0;
+  top: 0.6rem;
+  width: 8px;
+  height: 8px;
+  background: #ffc14d;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #ffc14d99;
 }
 /* -------------------------------
    TOOLKIT HIDE/SHOW LOGIC
