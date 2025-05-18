@@ -178,15 +178,6 @@ footer {
   max-width: 1000px;
 }
 
-.toolkit-header {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center the full group */
-  gap: 1.5rem; /* space between title and button */
-  flex-wrap: wrap;
-  text-align: center;
-}
-
 .toolkit-reveal {
   opacity: 0;
   max-height: 0;
@@ -277,4 +268,46 @@ footer {
     align-items: center;
     text-align: center;
 }
+}
+/* 🔥 CLEAN ALIGNMENTS — FINAL PATCHES */
+
+/* Remove emoji and center 'Live Projects' title */
+.projects .section-title::before,
+#toolkit-section .section-title::before {
+  content: none;
+}
+
+/* Center the title */
+.projects .section-title {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Fix Toolkit Access layout */
+#toolkit-section .toolkit-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* On mobile, ensure clean stack */
+@media (max-width: 600px) {
+  .section-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .toolkit-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .toolkit-btn {
+    width: 100%;
+    max-width: 240px;
+  }
 }
