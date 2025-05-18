@@ -249,6 +249,29 @@ footer {
   padding-bottom: 16px;
   border-bottom: 1px solid #333;
 }
+/* -------------------------------
+   TOOLKIT SECTION – FIXED FINAL
+--------------------------------*/
+.toolkit-reveal {
+  display: block;  /* allow animation to work */
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 1.5rem;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 12px;
+  margin: 1rem auto 2rem;
+  max-width: 700px;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(255,193,77,0.1);
+  transition: all 0.4s ease;
+}
+
+.toolkit-reveal.visible {
+  opacity: 1;
+  max-height: 500px;
+}
 
 /* -------------------------------
    RESPONSIVE DESIGN – MOBILE
@@ -275,19 +298,6 @@ footer {
 .toggle-toolkit {
   margin: 1rem auto 2rem;
   display: block;
-}
-
-.toolkit-reveal {
-    display: none ;
-  padding: 1.5rem;
-  background: #1e1e1e;
-  border: 1px solid #444;
-  border-radius: 12px;
-  margin: 1rem auto 2rem;
-  max-width: 700px;
-  text-align: left;
-  box-shadow: 0 0 10px rgba(255,193,77,0.1);
-  transition: all 0.3s ease;
 }
 
 .toolkit-reveal ul {
@@ -319,13 +329,6 @@ footer {
    TOOLKIT ANIMATION UPGRADE
 --------------------------------*/
 
-.toolkit-reveal {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
 .toolkit-reveal.visible {
   opacity: 1;
   max-height: 500px; /* or more depending on list height */
@@ -338,13 +341,6 @@ footer {
   display: none !important;
 }
 /* TOOLKIT BEHAVIOR */
-.toolkit-reveal {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  display: block;
-}
 
 .toolkit-reveal.visible {
   opacity: 1;
