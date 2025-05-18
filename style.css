@@ -89,25 +89,19 @@ footer {
   color: #ff6b00;
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* default, overridden below if needed */
   gap: 0.5rem;
 }
 
-.projects .section-title::before {
-  content: "🔥";
-  font-size: 1.8rem;
-  margin-right: 0.5rem;
-  display: flex;
-  align-items: center;
+.projects .section-title {
   justify-content: center;
 }
 
-#toolkit-section .section-title::before {
-  content: "🧰";
-  font-size: 1.8rem;
-  margin-right: 0.5rem;
+#toolkit-section .section-title {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
 }
 
 .project-cards {
@@ -186,12 +180,11 @@ footer {
 
 .toolkit-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  justify-content: center; /* center the full group */
+  gap: 1.5rem; /* space between title and button */
   flex-wrap: wrap;
-  max-width: 700px;
-  margin: 2rem auto 1rem;
+  text-align: center;
 }
 
 .toolkit-reveal {
@@ -279,8 +272,9 @@ footer {
     text-align: center;
   }
 
-  .section-title {
-  flex-direction: row; /* or column if stacked looks better */
-  align-items: center;
+   .section-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 }
