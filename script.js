@@ -6,8 +6,10 @@ const faders = document.querySelectorAll('.fade-in');
 
 // 2. Add click functionality to toggle the toolkit section
 toggleBtn.addEventListener("click", () => {
-  const isHidden = toolkit.style.display === "none";
-  toolkit.style.display = isHidden ? "block" : "none";
+  toolkit.classList.toggle("hidden");
+
+  const isVisible = !toolkit.classList.contains("hidden");
+  toggleBtn.textContent = isVisible ? "Hide Tools" : "Show Tools";
 });
 
 // 3. Make the title text change when clicked
