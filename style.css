@@ -1,13 +1,16 @@
+/* === GLOBAL RESET & BASE === */
 body {
   font-family: 'Inter', sans-serif;
-    margin: 0;
+  margin: 0;
   padding: 0;
   background-color: #111;
   color: #f4f4f4;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-line-height: 1.6;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
+
 :root {
   --section-padding: 4rem;
   --section-padding-small: 2rem;
@@ -17,9 +20,11 @@ h1, h2, h3, .section-title, .unchained {
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-
+/* === STRUCTURE === */
 header {
   background: #222;
   text-align: center;
@@ -66,17 +71,7 @@ footer {
   padding: var(--section-padding-small) 2rem;
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* === CREED === */
 .creed {
   font-size: 1.4rem;
   text-align: center;
@@ -90,6 +85,7 @@ footer {
   letter-spacing: 0.5px;
 }
 
+/* === PROJECTS === */
 .projects {
   margin: 2rem auto;
   padding: 1rem;
@@ -103,7 +99,7 @@ footer {
   color: #ff6b00;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* default, overridden below if needed */
+  justify-content: flex-start;
   gap: 0.5rem;
 }
 
@@ -145,6 +141,7 @@ footer {
   margin-bottom: 0.5rem;
 }
 
+/* === TOOLKIT === */
 .toolkit-preview {
   background-color: #1e1e1e;
   padding: 2rem;
@@ -174,20 +171,6 @@ footer {
   font-size: 14px;
   transition: all 0.3s ease;
   cursor: pointer;
-}
-.cta-animate {
-  animation: pulse-fade 1s ease-out 0.5s backwards;
-}
-
-@keyframes pulse-fade {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 .toolkit-btn:hover {
@@ -267,59 +250,34 @@ footer {
   box-shadow: 0 0 6px #ffc14d99;
 }
 
-@media (max-width: 600px) {
-  .toolkit-item h3 {
-    font-size: 1.1rem;
-  }
-
-  .toolkit-item p,
-  .toolkit-item a {
-    font-size: 0.95rem;
-  }
-
-  .toolkit-preview {
-    padding: 0 12px;
-  }
-
-  .toolkit-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .toolkit-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-   .section-title {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-}
-/* 🔥 CLEAN ALIGNMENTS — FINAL PATCHES */
-
-/* Remove emoji and center 'Live Projects' title */
-.projects .section-title::before,
-#toolkit-section .section-title::before {
-  content: none;
+/* === ANIMATIONS === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
 }
 
-/* Center the title */
-.projects .section-title {
-  justify-content: center;
-  text-align: center;
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Fix Toolkit Access layout */
-#toolkit-section .toolkit-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1rem;
+.cta-animate {
+  animation: pulse-fade 1s ease-out 0.5s backwards;
 }
-/* === HERO STYLES === */
+
+@keyframes pulse-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === HERO === */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
@@ -359,12 +317,38 @@ footer {
   transform: scale(1.05);
 }
 
-/* On mobile, ensure clean stack */
+/* === PATCHES & CLEANUP === */
+.projects .section-title::before,
+#toolkit-section .section-title::before {
+  content: none;
+}
+
+.projects .section-title {
+  justify-content: center;
+  text-align: center;
+}
+
+#toolkit-section .toolkit-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* === MEDIA QUERIES === */
 @media (max-width: 600px) {
-  .section-title {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .toolkit-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .toolkit-item p,
+  .toolkit-item a {
+    font-size: 0.95rem;
+  }
+
+  .toolkit-preview {
+    padding: 0 12px;
   }
 
   .toolkit-header {
@@ -375,20 +359,18 @@ footer {
 
   .toolkit-btn {
     width: 100%;
+    text-align: center;
     max-width: 240px;
   }
-}
-body {
-  font-size: 16px;
-}
 
-h1, h2, h3 {
-  font-size: 1.5rem;
-  text-align: center;
-}
+  .section-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-.creed {
-  font-size: 1.2rem;
-  padding: 0 1rem;
+  .creed {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
 }
-
