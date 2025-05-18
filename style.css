@@ -262,14 +262,17 @@ footer {
   padding-bottom: 16px;
   border-bottom: 1px solid #333;
 }
-#toolkit-section {
+/* -------------------------------
+   TOOLKIT HEADER – FLEX FIX
+--------------------------------*/
+.toolkit-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
   max-width: 700px;
-  margin: 2rem auto;
+  margin: 2rem auto 1rem;
 }
 /* -------------------------------
    TOOLKIT SECTION – FIXED FINAL
