@@ -4,34 +4,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const toolkit = document.getElementById("toolkit");
   const faders = document.querySelectorAll(".fade-in");
 
-  // 1. Make sure toolkit is hidden by default
+  // 1. Ensure hidden by default (redundant safeguard)
   toolkit.classList.add("hidden");
 
-  // 2. Toggle toolkit with proper visibility handling
+  // 2. Toggle toolkit section
   toggleBtn.addEventListener("click", () => {
     console.log("Toolkit toggle button clicked");
 
-   const isHidden = toolkit.classList.contains("hidden");
+    // Remove both to reset
+    toolkit.classList.remove("hidden", "visible");
 
-if (isHidden) {
-  toolkit.classList.remove("hidden");
-  toolkit.classList.add("visible");
-  toggleBtn.textContent = "Close Toolkit";
-} else {
-  toolkit.classList.remove("visible");
-  toolkit.classList.add("hidden");
-  toggleBtn.textContent = "Open Toolkit";
-}
+    // Determine what class to apply next
+    const shouldShow = !toolkit.classList.contains("visible");
+
+    if (shouldShow) {
+      toolkit.classList.add("visible");
+      toggleBtn.textContent = "Close Toolkit";
+    } else {
+      toolkit.classList.add("hidden");
+      toggleBtn.textContent = "Open Toolkit";
+    }
   });
 
-  // 3. Change title on click
-  title.addEventListener("click", () => {
-    title.textContent = "🔥 Forged Anew";
-  });
-
-  // 4. Handle fade-in animations on scroll
+  // 3. Animate sections on scroll
   function appearOnScroll() {
-    faders.forEach((el) => {
+    faders.forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight - 100) {
         el.classList.add("visible");
@@ -40,35 +37,37 @@ if (isHidden) {
   }
 
   window.addEventListener("scroll", appearOnScroll);
+  appearOnScroll(); // Trigger once on load
 
-  // 5. Custom motivational greeting based on time of day
+  // 4. Greeting logic
   const hour = new Date().getHours();
-  let greeting;
+  let greeting = "🔥 Keep going, creator."; // default fallback
 
   if (hour >= 0 && hour < 2) {
-    greeting = "🕛 Midnight reset. Fresh day, fresh chance.";
+    greeting = "🌌 Midnight strikes. Reset. Refocus.";
   } else if (hour >= 2 && hour < 4) {
-    greeting = "🌘 Still grinding? Rest earns power.";
+    greeting = "🕑 Still awake? Legends are built at 2AM.";
   } else if (hour >= 4 && hour < 6) {
-    greeting = "⚔️ Early bird or night warrior — you're Unchained.";
+    greeting = "⚒️ The Unchained rise early or don’t sleep.";
   } else if (hour >= 6 && hour < 10) {
-    greeting = "🌅 Good morning, creator. Let’s build something legendary.";
+    greeting = "🌞 Morning, creator. Build with fire.";
   } else if (hour >= 10 && hour < 12) {
-    greeting = "☕ Time for a deep breath and maybe a coffee break.";
+    greeting = "☕ Coffee break? Stay sharp.";
   } else if (hour >= 12 && hour < 14) {
-    greeting = "🌞 Good afternoon — pace yourself, but don’t stop.";
+    greeting = "🌤️ Afternoon, keep pushing.";
   } else if (hour >= 14 && hour < 17) {
-    greeting = "🍽️ Reminder: You need fuel too — have you eaten?";
+    greeting = "🍽️ Don't forget to eat, warrior.";
   } else if (hour >= 17 && hour < 20) {
-    greeting = "🌇 Slow it down. Review what you’ve forged today.";
+    greeting = "🧘 Time to slow the pace, not the vision.";
   } else if (hour >= 20 && hour < 22) {
-    greeting = "🌙 Wind down. Stillness sharpens the next strike.";
-  } else {
-    greeting = "🛌 Good night, champion. Rest is part of the ritual.";
+    greeting = "🌙 Wind down with pride in your craft.";
+  } else if (hour >= 22) {
+    greeting = "🛡️ Rest well, tomorrow we strike again.";
   }
 
   const contactSection = document.querySelector("#contact");
   const greetDiv = document.createElement("div");
   greetDiv.textContent = greeting;
+  greetDiv.classList.add("creed");
   contactSection.prepend(greetDiv);
 });
