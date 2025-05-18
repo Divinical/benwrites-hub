@@ -76,6 +76,17 @@ body {
   .toolkit-preview p {
     color: #ccc;
   }
+  .toolkit-preview a {
+    color: #6ba5ff;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .toolkit-preview a:hover {
+    color: #ffc14d;
+    transform: scale(1.05);
+  }  
   .toolkit-grid {
     display: grid;
     gap: 2rem;
