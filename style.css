@@ -291,26 +291,7 @@ footer {
   text-align: center;
   gap: 1rem;
 }
-
-/* On mobile, ensure clean stack */
-@media (max-width: 600px) {
-  .section-title {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .toolkit-header {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .toolkit-btn {
-    width: 100%;
-    max-width: 240px;
-  }
-}
+/* === HERO STYLES === */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
@@ -341,10 +322,31 @@ footer {
   text-decoration: none;
   box-shadow: 0 0 12px #ffc14d55;
   transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .hero-cta:hover {
   background: #ff9c1a;
   box-shadow: 0 0 20px #ff9c1a99;
   transform: scale(1.05);
+}
+
+/* On mobile, ensure clean stack */
+@media (max-width: 600px) {
+  .section-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .toolkit-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .toolkit-btn {
+    width: 100%;
+    max-width: 240px;
+  }
 }
