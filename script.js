@@ -1,63 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const title = document.querySelector("h1");
+  // === 1. TOOLKIT TOGGLE ===
   const toggleBtn = document.getElementById("toggle-btn");
   const toolkit = document.getElementById("toolkit");
-  const faders = document.querySelectorAll(".fade-in");
-
   toolkit.classList.add("hidden");
 
   toggleBtn.addEventListener("click", () => {
-    console.log("Toolkit toggle button clicked");
-
     const isHidden = toolkit.classList.contains("hidden");
-
-    if (isHidden) {
-      toolkit.classList.remove("hidden");
-      toolkit.classList.add("visible");
-      toggleBtn.textContent = "Close Toolkit";
-    } else {
-      toolkit.classList.remove("visible");
-      toolkit.classList.add("hidden");
-      toggleBtn.textContent = "Open Toolkit";
-    }
+    toolkit.classList.toggle("hidden", !isHidden);
+    toolkit.classList.toggle("visible", isHidden);
+    toggleBtn.textContent = isHidden ? "Close Toolkit" : "Open Toolkit";
   });
 
-  function appearOnScroll() {
-    faders.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
+  // === 2. STAGGER + FADE-IN ===
+  function revealOnScroll() {
+    const triggerPoint = window.innerHeight * 0.85;
+
+    // Fade in everything that's not a project card
+    document.querySelectorAll(".fade-in:not(.project-card)").forEach(el => {
+      if (el.getBoundingClientRect().top < triggerPoint) {
         el.classList.add("visible");
+      }
+    });
+
+    // Staggered fade-in for .project-card
+    const cards = document.querySelectorAll(".project-card.fade-in");
+    cards.forEach((el, index) => {
+      const top = el.getBoundingClientRect().top;
+      if (top < triggerPoint) {
+        setTimeout(() => {
+          el.classList.add("visible");
+        }, index * 150); // Stagger delay
       }
     });
   }
 
-  window.addEventListener("scroll", appearOnScroll);
-  appearOnScroll();
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // Run on load
 
+  // === 3. TIME-BASED GREETING ===
   const hour = new Date().getHours();
   let greeting = "🔥 Keep going, creator.";
 
-  if (hour >= 0 && hour < 2) {
-    greeting = "🌌 Midnight strikes. Reset. Refocus.";
-  } else if (hour >= 2 && hour < 4) {
-    greeting = "🕑 Still awake? Legends are built at 2AM.";
-  } else if (hour >= 4 && hour < 6) {
-    greeting = "⚒️ The Unchained rise early or don’t sleep.";
-  } else if (hour >= 6 && hour < 10) {
-    greeting = "🌞 Morning, creator. Build with fire.";
-  } else if (hour >= 10 && hour < 12) {
-    greeting = "☕ Coffee break? Stay sharp.";
-  } else if (hour >= 12 && hour < 14) {
-    greeting = "🌤️ Afternoon, keep pushing.";
-  } else if (hour >= 14 && hour < 17) {
-    greeting = "🍽️ Don't forget to eat, warrior.";
-  } else if (hour >= 17 && hour < 20) {
-    greeting = "🧘 Time to slow the pace, not the vision.";
-  } else if (hour >= 20 && hour < 22) {
-    greeting = "🌙 Wind down with pride in your craft.";
-  } else if (hour >= 22) {
-    greeting = "🛡️ Rest well, tomorrow we strike again.";
-  }
+  if (hour < 2) greeting = "🌌 Midnight strikes. Reset. Refocus.";
+  else if (hour < 4) greeting = "🕑 Still awake? Legends are built at 2AM.";
+  else if (hour < 6) greeting = "⚒️ The Unchained rise early or don’t sleep.";
+  else if (hour < 10) greeting = "🌞 Morning, creator. Build with fire.";
+  else if (hour < 12) greeting = "☕ Coffee break? Stay sharp.";
+  else if (hour < 14) greeting = "🌤️ Afternoon, keep pushing.";
+  else if (hour < 17) greeting = "🍽️ Don't forget to eat, warrior.";
+  else if (hour < 20) greeting = "🧘 Time to slow the pace, not the vision.";
+  else if (hour < 22) greeting = "🌙 Wind down with pride in your craft.";
+  else greeting = "🛡️ Rest well, tomorrow we strike again.";
 
   const greetDiv = document.createElement("div");
   greetDiv.textContent = greeting;
