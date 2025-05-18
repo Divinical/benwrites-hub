@@ -57,4 +57,19 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+  .toolkit-preview {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    border-top: 2px solid #444;
+  }
   
+  .toolkit-preview h2 {
+    color: #ff8c00;
+  }
+  
+  .toolkit-preview p {
+    color: #ccc;
+  }
+    
