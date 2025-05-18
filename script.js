@@ -8,20 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
   toolkit.classList.add("hidden");
 
   toggleBtn.addEventListener("click", () => {
-    console.log("Toolkit toggle button clicked");
+  console.log("Toolkit toggle button clicked");
 
-    const isHidden = toolkit.classList.contains("hidden");
+  const isHidden = toolkit.classList.contains("hidden");
 
-    toolkit.classList.remove("hidden", "visible");
-
-    if (isHidden) {
-      toolkit.classList.add("visible");
-      toggleBtn.textContent = "Close Toolkit";
-    } else {
-      toolkit.classList.add("hidden");
-      toggleBtn.textContent = "Open Toolkit";
-    }
-  });
+  if (isHidden) {
+    toolkit.classList.remove("hidden");
+    toolkit.classList.add("visible");
+    toggleBtn.textContent = "Close Toolkit";
+  } else {
+    toolkit.classList.remove("visible");
+    toolkit.classList.add("hidden");
+    toggleBtn.textContent = "Open Toolkit";
+  }
+});
 
   // Fade-in sections on scroll
   function appearOnScroll() {

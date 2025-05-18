@@ -117,11 +117,15 @@ footer {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #ff6b00;
-}
-.section-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* spacing between emoji and text */
+  gap: 0.5rem;
+}
+.projects .section-title::before {
+  content: "🔥";
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  transform: translateY(2px);
 }
 
 .section-title::before {
@@ -278,7 +282,6 @@ footer {
    TOOLKIT SECTION – FIXED FINAL
 --------------------------------*/
 .toolkit-reveal {
-  display: block;  /* allow animation to work */
   opacity: 0;
   max-height: 0;
   overflow: hidden;
@@ -297,11 +300,11 @@ footer {
   opacity: 1;
   max-height: 500px;
 }
-.toolkit-reveal {
-  /* ...existing styles... */
-  margin-left: auto;
-  margin-right: auto;
+
+.toolkit-reveal.hidden {
+  display: none !important;
 }
+
 
 /* -------------------------------
    RESPONSIVE DESIGN – MOBILE
@@ -320,6 +323,15 @@ footer {
   .toolkit-preview {
     padding: 0 12px;
   }
+  .toolkit-header {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.toolkit-btn {
+  width: 100%;
+  text-align: center;
+}
 }
 /* -------------------------------
    TOOLKIT TOGGLE SECTION
