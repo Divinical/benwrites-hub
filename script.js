@@ -4,26 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const toolkit = document.getElementById("toolkit");
   const faders = document.querySelectorAll(".fade-in");
 
-  // Set toolkit to hidden state initially
   toolkit.classList.add("hidden");
 
   toggleBtn.addEventListener("click", () => {
-  console.log("Toolkit toggle button clicked");
+    console.log("Toolkit toggle button clicked");
 
-  const isHidden = toolkit.classList.contains("hidden");
+    const isHidden = toolkit.classList.contains("hidden");
 
-  if (isHidden) {
-    toolkit.classList.remove("hidden");
-    toolkit.classList.add("visible");
-    toggleBtn.textContent = "Close Toolkit";
-  } else {
-    toolkit.classList.remove("visible");
-    toolkit.classList.add("hidden");
-    toggleBtn.textContent = "Open Toolkit";
-  }
-});
+    if (isHidden) {
+      toolkit.classList.remove("hidden");
+      toolkit.classList.add("visible");
+      toggleBtn.textContent = "Close Toolkit";
+    } else {
+      toolkit.classList.remove("visible");
+      toolkit.classList.add("hidden");
+      toggleBtn.textContent = "Open Toolkit";
+    }
+  });
 
-  // Fade-in sections on scroll
   function appearOnScroll() {
     faders.forEach(el => {
       const rect = el.getBoundingClientRect();
@@ -36,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", appearOnScroll);
   appearOnScroll();
 
-  // Custom Time-Based Greeting
   const hour = new Date().getHours();
   let greeting = "🔥 Keep going, creator.";
 
