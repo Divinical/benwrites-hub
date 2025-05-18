@@ -278,7 +278,7 @@ footer {
 }
 
 .toolkit-reveal {
-  display: none;
+    display: none !important;
   padding: 1.5rem;
   background: #1e1e1e;
   border: 1px solid #444;
