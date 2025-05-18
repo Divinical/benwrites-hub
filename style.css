@@ -68,7 +68,26 @@ body {
     text-align: center;
     border-top: 2px solid #444;
   }
+  .toolkit-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 6px;
+    background-color: #111111;
+    color: #ffc14d;
+    border: 2px solid #ffc14d;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
   
+  .toolkit-btn:hover {
+    background-color: #ffc14d;
+    color: #111111;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 10px #ffc14d80;
+  }  
   .toolkit-preview h2 {
     color: #ff8c00;
   }
