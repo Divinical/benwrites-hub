@@ -11,18 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleBtn.addEventListener("click", () => {
     console.log("Toolkit toggle button clicked");
 
-    toolkit.classList.toggle("hidden");
+   const isHidden = toolkit.classList.contains("hidden");
 
-    const isVisible = !toolkit.classList.contains("hidden");
-
-    // Control the 'visible' animation class manually
-    if (isVisible) {
-      toolkit.classList.add("visible");
-      toggleBtn.textContent = "Close Toolkit";
-    } else {
-      toolkit.classList.remove("visible");
-      toggleBtn.textContent = "Open Toolkit";
-    }
+if (isHidden) {
+  toolkit.classList.remove("hidden");
+  toolkit.classList.add("visible");
+  toggleBtn.textContent = "Close Toolkit";
+} else {
+  toolkit.classList.remove("visible");
+  toolkit.classList.add("hidden");
+  toggleBtn.textContent = "Open Toolkit";
+}
   });
 
   // 3. Change title on click
