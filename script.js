@@ -4,20 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const toolkit = document.getElementById("toolkit");
   const faders = document.querySelectorAll(".fade-in");
 
-  // 1. Ensure hidden by default (redundant safeguard)
+  // Set toolkit to hidden state initially
   toolkit.classList.add("hidden");
 
-  // 2. Toggle toolkit section
   toggleBtn.addEventListener("click", () => {
     console.log("Toolkit toggle button clicked");
 
-    // Remove both to reset
+    const isHidden = toolkit.classList.contains("hidden");
+
     toolkit.classList.remove("hidden", "visible");
 
-    // Determine what class to apply next
-    const shouldShow = !toolkit.classList.contains("visible");
-
-    if (shouldShow) {
+    if (isHidden) {
       toolkit.classList.add("visible");
       toggleBtn.textContent = "Close Toolkit";
     } else {
@@ -26,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 3. Animate sections on scroll
+  // Fade-in sections on scroll
   function appearOnScroll() {
     faders.forEach(el => {
       const rect = el.getBoundingClientRect();
@@ -37,11 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", appearOnScroll);
-  appearOnScroll(); // Trigger once on load
+  appearOnScroll();
 
-  // 4. Greeting logic
+  // Custom Time-Based Greeting
   const hour = new Date().getHours();
-  let greeting = "🔥 Keep going, creator."; // default fallback
+  let greeting = "🔥 Keep going, creator.";
 
   if (hour >= 0 && hour < 2) {
     greeting = "🌌 Midnight strikes. Reset. Refocus.";
@@ -65,9 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
     greeting = "🛡️ Rest well, tomorrow we strike again.";
   }
 
-  const contactSection = document.querySelector("#contact");
   const greetDiv = document.createElement("div");
   greetDiv.textContent = greeting;
   greetDiv.classList.add("creed");
-  contactSection.prepend(greetDiv);
+
+  const greetingTarget = document.getElementById("greeting-placeholder");
+  greetingTarget.appendChild(greetDiv);
 });

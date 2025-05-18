@@ -337,3 +337,20 @@ footer {
 .hidden {
   display: none !important;
 }
+/* TOOLKIT BEHAVIOR */
+.toolkit-reveal {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: block;
+}
+
+.toolkit-reveal.visible {
+  opacity: 1;
+  max-height: 300px;
+}
+
+.hidden {
+  display: none !important;
+}
