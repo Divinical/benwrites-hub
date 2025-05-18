@@ -91,14 +91,16 @@ footer {
 --------------------------------*/
 
 .creed {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
-  max-width: 700px;
-  margin: 2rem auto;
+  max-width: 800px;
+  margin: 3rem auto 2rem;
   color: #ffc14d;
   font-style: italic;
-  font-weight: 500;
-  text-shadow: 0 0 4px #000;
+  font-weight: 600;
+  line-height: 1.6;
+  text-shadow: 0 0 4px #ffc14d55, 0 0 8px #000;
+  letter-spacing: 0.5px;
 }
 /* -------------------------------
    LIVE PROJECTS SECTION
