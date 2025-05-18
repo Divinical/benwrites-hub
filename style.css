@@ -316,6 +316,21 @@ footer {
   box-shadow: 0 0 6px #ffc14d99;
 }
 /* -------------------------------
+   TOOLKIT ANIMATION UPGRADE
+--------------------------------*/
+
+.toolkit-reveal {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.toolkit-reveal.visible {
+  opacity: 1;
+  max-height: 500px; /* or more depending on list height */
+}
+/* -------------------------------
    TOOLKIT HIDE/SHOW LOGIC
 --------------------------------*/
 
