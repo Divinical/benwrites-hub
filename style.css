@@ -44,9 +44,13 @@ body {
   
   footer {
     text-align: center;
-    padding: 1rem;
-    background: #222;
-  }
+    font-size: 0.85rem;
+    margin-top: 48px;
+    padding: 16px;
+    color: #aaa;
+    border-top: 1px solid #333;
+    text-shadow: 0 0 4px #6a6a6a33;
+  }  
   .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -111,5 +115,36 @@ body {
     text-decoration: none;
     font-weight: bold;
   }
+  .toolkit-preview a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #4da6ff;
+    text-decoration: underline;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
   
+  .toolkit-preview a:hover {
+    transform: translateX(4px);
+    color: #88c9ff;
+  }
+  .toolkit-item {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #333;
+  }
+  @media (max-width: 600px) {
+    .toolkit-item h3 {
+      font-size: 1.1rem;
+    }
+  
+    .toolkit-item p,
+    .toolkit-item a {
+      font-size: 0.95rem;
+    }
+  
+    .toolkit-preview {
+      padding: 0 12px;
+    }
+  }
+    
     
