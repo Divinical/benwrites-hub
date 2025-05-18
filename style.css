@@ -118,6 +118,19 @@ footer {
   margin-bottom: 1rem;
   color: #ff6b00;
 }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* spacing between emoji and text */
+}
+
+.section-title::before {
+  content: "🧰";
+  font-size: 1.8rem;
+  display: inline-block;
+  transform: translateY(2px); /* fine-tune vertical alignment */
+  margin-right: 0.5rem;
+}
 
 .project-cards {
   display: flex;
@@ -249,6 +262,15 @@ footer {
   padding-bottom: 16px;
   border-bottom: 1px solid #333;
 }
+#toolkit-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 2rem auto;
+}
 /* -------------------------------
    TOOLKIT SECTION – FIXED FINAL
 --------------------------------*/
@@ -271,6 +293,11 @@ footer {
 .toolkit-reveal.visible {
   opacity: 1;
   max-height: 500px;
+}
+.toolkit-reveal {
+  /* ...existing styles... */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* -------------------------------
@@ -326,26 +353,8 @@ footer {
   box-shadow: 0 0 6px #ffc14d99;
 }
 /* -------------------------------
-   TOOLKIT ANIMATION UPGRADE
---------------------------------*/
-
-.toolkit-reveal.visible {
-  opacity: 1;
-  max-height: 500px; /* or more depending on list height */
-}
-/* -------------------------------
    TOOLKIT HIDE/SHOW LOGIC
 --------------------------------*/
-
-.hidden {
-  display: none !important;
-}
-/* TOOLKIT BEHAVIOR */
-
-.toolkit-reveal.visible {
-  opacity: 1;
-  max-height: 300px;
-}
 
 .hidden {
   display: none !important;
