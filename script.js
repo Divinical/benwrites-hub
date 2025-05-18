@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   toolkit.classList.add("hidden");
 
   toggleBtn.addEventListener("click", () => {
+    console.log("Toolkit toggle button clicked");
     toolkit.classList.toggle("hidden");
     const isVisible = !toolkit.classList.contains("hidden");
     toggleBtn.textContent = isVisible ? "Close Toolkit" : "Open Toolkit";
