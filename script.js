@@ -18,16 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("theme", isCurrentlyDark ? "light" : "dark");
   });
 
-  // === TOOLKIT TOGGLE ===
-  const isVisible = toolkitReveal.classList.contains("visible");
-  toolkitToggle.textContent = isVisible ? "Close Blacksite" : "Open Blacksite";
+// === TOOLKIT TOGGLE ===
+const isVisible = toolkitReveal.classList.contains("visible");
+toolkitToggle.textContent = isVisible ? "🔒 Lock the Vault" : "🧨 Enter Blacksite";
 
-  toolkitToggle.addEventListener("click", () => {
-    toolkitReveal.classList.toggle("visible");
-    toolkitReveal.classList.toggle("hidden");
-    const nowVisible = toolkitReveal.classList.contains("visible");
-    toolkitToggle.textContent = nowVisible ? "Close Blacksite" : "Open Blacksite";
-  });
+toolkitToggle.addEventListener("click", () => {
+  toolkitReveal.classList.toggle("visible");
+  toolkitReveal.classList.toggle("hidden");
+  const nowVisible = toolkitReveal.classList.contains("visible");
+  toolkitToggle.textContent = nowVisible ? "🔒 Lock the Vault" : "🧨 Enter Blacksite";
+});
 
   // === FORGE FORM SUBMIT ===
   form.addEventListener("submit", async function (e) {
