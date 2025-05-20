@@ -1,61 +1,82 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === 1. TOOLKIT TOGGLE ===
-  const toggleBtn = document.getElementById("toggle-btn");
-  const toolkit = document.getElementById("toolkit");
-  toolkit.classList.add("hidden");
+  const toggle = document.getElementById("darkToggle");
+  const toolkitToggle = document.getElementById("toolkitToggle");
+  const toolkitReveal = document.getElementById("toolkitReveal");
+  const form = document.getElementById("forgeForm");
+  const successMessage = document.getElementById("successMessage");
+  const promptText = document.getElementById("challengePrompt");
 
-  toggleBtn.addEventListener("click", () => {
-    const isHidden = toolkit.classList.contains("hidden");
-    toolkit.classList.toggle("hidden", !isHidden);
-    toolkit.classList.toggle("visible", isHidden);
-    toggleBtn.textContent = isHidden ? "Close Toolkit" : "Open Toolkit";
+  document.body.classList.add("fade-in");
+
+  // === THEME SETUP ===
+  const isDark = localStorage.getItem("theme") !== "light";
+  document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+
+  toggle.addEventListener("click", () => {
+    const isCurrentlyDark = document.documentElement.getAttribute("data-theme") === "dark";
+    document.documentElement.setAttribute("data-theme", isCurrentlyDark ? "light" : "dark");
+    localStorage.setItem("theme", isCurrentlyDark ? "light" : "dark");
   });
 
-  // === 2. STAGGER + FADE-IN ===
-  function revealOnScroll() {
-    const triggerPoint = window.innerHeight * 0.85;
+  // === TOOLKIT TOGGLE ===
+  const isVisible = toolkitReveal.classList.contains("visible");
+  toolkitToggle.textContent = isVisible ? "Close Toolkit" : "Open Toolkit";
 
-    // Fade in everything that's not a project card
-    document.querySelectorAll(".fade-in:not(.project-card)").forEach(el => {
-      if (el.getBoundingClientRect().top < triggerPoint) {
-        el.classList.add("visible");
-      }
-    });
+  toolkitToggle.addEventListener("click", () => {
+    toolkitReveal.classList.toggle("visible");
+    toolkitReveal.classList.toggle("hidden");
+    const nowVisible = toolkitReveal.classList.contains("visible");
+    toolkitToggle.textContent = nowVisible ? "Close Toolkit" : "Open Toolkit";
+  });
 
-    // Staggered fade-in for .project-card
-    const cards = document.querySelectorAll(".project-card.fade-in");
-    cards.forEach((el, index) => {
-      const top = el.getBoundingClientRect().top;
-      if (top < triggerPoint) {
+  // === FORGE FORM SUBMIT ===
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const action = form.getAttribute("action");
+
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+
+      if (response.ok) {
+        form.classList.add("fade");
         setTimeout(() => {
-          el.classList.add("visible");
-        }, index * 150); // Stagger delay
+          form.reset();
+          form.classList.add("hidden");
+          successMessage.classList.remove("hidden");
+          document.getElementById("builderTitle").classList.add("hidden");
+          document.getElementById("challengeTitle").parentElement.classList.add("hidden");
+          document.getElementById("challengePrompt").classList.add("hidden");
+          successMessage.classList.add("reveal");
+          promptText.classList.add("hidden");
+          document.getElementById("challengeTitle").textContent = "🔥 Challenge Logged. Let the sparks decide.";
+        }, 700);
+      } else {
+        alert("Something went wrong. Please try again later.");
       }
-    });
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Run on load
-
-  // === 3. TIME-BASED GREETING ===
-  const hour = new Date().getHours();
-  let greeting = "🔥 Keep going, creator.";
-
-  if (hour < 2) greeting = "🌌 Midnight strikes. Reset. Refocus.";
-  else if (hour < 4) greeting = "🕑 Still awake? Legends are built at 2AM.";
-  else if (hour < 6) greeting = "⚒️ The Unchained rise early or don’t sleep.";
-  else if (hour < 10) greeting = "🌞 Morning, creator. Build with fire.";
-  else if (hour < 12) greeting = "☕ Coffee break? Stay sharp.";
-  else if (hour < 14) greeting = "🌤️ Afternoon, keep pushing.";
-  else if (hour < 17) greeting = "🍽️ Don't forget to eat, warrior.";
-  else if (hour < 20) greeting = "🧘 Time to slow the pace, not the vision.";
-  else if (hour < 22) greeting = "🌙 Wind down with pride in your craft.";
-  else greeting = "🛡️ Rest well, tomorrow we strike again.";
-
-  const greetDiv = document.createElement("div");
-  greetDiv.textContent = greeting;
-  greetDiv.classList.add("creed");
-
-  const greetingTarget = document.getElementById("greeting-placeholder");
-  greetingTarget.appendChild(greetDiv);
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again later.");
+    }
+  });
 });
+// === SCROLL REVEAL ===
+const revealElements = document.querySelectorAll('.scroll-reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target); // Optional: trigger once
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+revealElements.forEach(el => revealObserver.observe(el));

@@ -1,104 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="BenWritesHUB | Unchained freelance copywriting and automation projects by Benjamin Boarer.">
   <title>BenWritesHUB</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" as="style">
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
+ 
   <nav>
     <ul>
-      <li><a href="#about">About</a></li>
+      <li><a href="#about" class="active">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="dark-mode-toggle">
+      <div class="theme-toggle" title="Toggle dark/light mode">
+        <button id="darkToggle" aria-label="Toggle Dark Mode">🦁</button>
+      </div>
+    </div>
   </nav>
-  
-  <header class="hero">
-  <h1 class="hero-title">BenWritesHUB</h1>
-  <p class="hero-subtitle">Writer. Builder. Unchained.</p>
-  <a href="#projects" class="toolkit-btn cta-animate">View My Work</a>
-</header>
 
-  <div id="greeting-placeholder"></div>
+  <header class="hero" id="about">
+    <h1 class="hero-title">BENWRITESHUB</h1>
+    <a href="https://www.fiverr.com/s/YOUR_GIG_URL" target="_blank" class="freelance-badge">
+      📌 Now Accepting Freelance Projects
+    </a>
+    <p class="hero-subtitle">Writer. Builder. Unchained.</p>
+    <a class="hero-cta" href="#projects">View My Work</a>
+  </header>
 
-  <main>
-    <section id="about" class="fade-in">
-      <p class="creed">I build tools that work, stories that hit, and code that feels forged — not manufactured.</p>
-    </section>
+  <section class="creed section scroll-reveal">
+    <p>☕ <span class="creed-text">Coffee break? Stay sharp.</span></p>
+    <p><em>I build tools that work, stories that hit, and code that feels forged — not manufactured.</em></p>
+  </section>
 
-    <section id="projects" class="fade-in">
-      <div class="projects">
-        <h2 class="section-title">Live Projects</h2>
-        <div class="project-cards">
-          <div class="project-card fade-in">
-            <span class="emoji">🧠</span>
-            <h3>Fiverr Gigs</h3>
-            <p>Creative services that sell — bios, product copy, and more.</p>
-          </div>
-          <div class="project-card fade-in">
-            <span class="emoji">💼</span>
-            <h3>Productivity Tools</h3>
-            <p>Trackers, templates, and code to boost your workflow.</p>
-          </div>
-          <div class="project-card fade-in">
-            <span class="emoji">🤖</span>
-            <h3>Discord Bots</h3>
-            <p>Custom bots with soul. Built for engagement, not noise.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <section class="section" id="forge">
+<h2 class="section-title scroll-reveal delay-1">🔥 The Forge</h2>
+<p class="section-subtitle scroll-reveal delay-2">Got fire? Send it. I forge what earns its place.</p>
 
-    <section id="toolkit-section" class="fade-in">
-      <div class="toolkit-header">
-        <h2 class="section-title">Toolkit Access</h2>
-        <button id="toggle-btn" class="toolkit-btn toggle-toolkit">Open Toolkit</button>
-      </div>
+  <div class="section forge-section">
+  <!-- Echoes from the Forge -->
+  <div class="forge-card scroll-reveal">
+    <h3><span>📓</span> Echoes from the Forge</h3>
+    <ul>
+      <li>[20:10] Removed 'Toolkit' — renamed section 'The Forge'</li>
+      <li>[20:16] Shifted layout to dark glow polish</li>
+      <li>[20:30] Smoothed scroll behavior and font preload finalized</li>
+      <li>[20:43] Ben challenged me with a rune logo idea — pending 🔥</li>
+      <li>[20:58] Planning The Forge feedback box structure</li>
+    </ul>
+  </div>
 
-      <div id="toolkit" class="toolkit-reveal">
-        <ul>
-          <li>🧠 Scroll Hook Generator</li>
-          <li>🛠️ Productivity Dashboard</li>
-          <li>📜 Fiverr Bio Formatter</li>
-        </ul>
-      </div>
-    </section>
+  <!-- Challenge the Builder -->
+  <div class="forge-card scroll-reveal">
+    <h3 id="builderTitle"><span id="challengeTitle">💡</span> Challenge the Builder</h3>
+    <div id="challengePrompt">
+  <p>One sentence. One shot. What should I build next?</p>
+</div>
+    <form id="forgeForm" action="https://formspree.io/f/mdkgjzqb" method="POST">
+  <input type="text" name="challenge" placeholder="Your challenge..." required>
+  <input type="text" name="name" placeholder="Your name (optional)">
+  <button type="submit">Submit Challenge</button>
+</form>
+<div id="successMessage" class="hidden">
+  <p>🖊️ <strong>Challenge received. The Forge burns brighter.</strong></p>
+  <p>🔥 <strong>A spark was struck. Let’s see what becomes of it.</strong></p>
+</div>
+    <p class="footnote">🩸 One forge pick per week. Surprise me.</p>
+  </div>
+</div>
+</section>
 
-    <section class="toolkit-preview fade-in">
-      <h2>Coming Soon: 🔧 BenWritesHUB Toolkits</h2>
-      <p>Practical downloads and code tools to help you build, sell, and automate — unchained.</p>
-    </section>
+<!-- 🔥 CLEAN THEMED DIVIDER (FIXED) -->
+<div class="section-divider-wrapper">
+  <svg class="section-divider-svg dark-divider" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 1440 120" preserveAspectRatio="none"
+       aria-hidden="true" role="presentation">
+    <path d="M0,64 C480,128 960,0 1440,64 L1440,0 L0,0 Z" />
+  </svg>
+  <svg class="section-divider-svg light-divider" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 1440 120" preserveAspectRatio="none"
+       aria-hidden="true" role="presentation">
+    <path d="M0,64 C480,128 960,0 1440,64 L1440,0 L0,0 Z" />
+  </svg>
+</div>
 
-    <section class="toolkit-grid fade-in">
-      <div class="toolkit-item">
-        <h3>🧠 Mindset Tracker</h3>
-        <p>A printable PDF to reinforce daily wins and build creative discipline.</p>
-        <a href="toolkits/mindset-tracker.zip" class="toolkit-btn" download>Download</a>
-      </div>
+<!-- Toolkit section -->
+  <section class="section" id="toolkit-section">
+    <h2 class="section-title scroll-reveal delay-1">🧨 The Unchained Blacksite</h2>
+    <p class="section-subtitle scroll-reveal delay-2">
+  Everything in this vault was once chained. I’m just here to break locks.
+</p>
+    <div class="toolkit-toggle-wrapper scroll-reveal delay-2">
+  <button id="toolkitToggle" class="toolkit-btn">Close Toolkit</button>
+</div>
 
-      <div class="toolkit-item">
-        <h3>📜 Sales Page Template</h3>
-        <p>A clean, tested product page layout in HTML/CSS for launching anything.</p>
-        <a href="toolkits/sales-template.zip" class="toolkit-btn" download>Download</a>
-      </div>
+    <div id="toolkitReveal" class="toolkit-reveal hidden">
+  <ul class="toolkit-list">
+  <li class="unchained scroll-reveal delay-1" title="The first crack. When the walls remembered they were never real.">
+    <span class="emoji">🔓</span>
+    <strong>Built This Site</strong><span class="desc"> – First crack in the wall. Chained no more.</span>
+  </li>
+  <li class="unchained scroll-reveal delay-2" title="Now motion obeys. Soon, even time will kneel.">
+    <span class="emoji">🧠</span>
+    <strong>Scroll Reveal Engine</strong><span class="desc"> – Animation obeys now.</span>
+  </li>
+  <li class="unchained scroll-reveal delay-3" title="Sight returned. I control what is seen—and what is left in shadow.">
+    <span class="emoji">🔓</span>
+    <strong>Dark Mode System</strong><span class="desc"> – I decide what the user sees.</span>
+  </li>
+  <li class="chained scroll-reveal delay-4" title="The core is caged, but I hold the blueprints.">
+    <span class="emoji">⛓️</span>
+    <strong>ReactJS</strong> – Still locked. But not for long.
+  </li>
+  <li class="chained scroll-reveal delay-5" title="The flame is lit. The backend will answer soon.">
+    <span class="emoji">⛓️</span>
+    <strong>Node.js</strong> – The backend will burn soon.
+  </li>
+  <li class="chained scroll-reveal delay-6" title="The frame resists. But its bindings weaken with every strike.">
+    <span class="emoji">⛓️</span>
+    <strong>TailwindCSS</strong> – Bound but drawn.
+  </li>
+  <li class="chained scroll-reveal delay-7" title="The content lives. The system just doesn’t know it yet.">
+    <span class="emoji">⛓️</span>
+    <strong>Content Systems</strong> – Static for now. Dynamic awaits.
+  </li>
+  <li class="chained scroll-reveal delay-8" title="Voice-coded. The gates will open when the signal is struck.">
+    <span class="emoji">⛓️</span>
+    <strong>Discord Bot Hosting</strong> – Voice coded. Deployment pending.
+  </li>
+  <li class="chained scroll-reveal delay-9" title="Silent, invisible, waiting to strike. Precision over presence.">
+    <span class="emoji">⛓️</span>
+    <strong>SEO Optimization</strong> – Stealthed. Not silent.
+  </li>
+  <li class="chained scroll-reveal delay-10" title="A kingdom awaits behind sealed gates. My blade hasn’t touched the lock—yet.">
+    <span class="emoji">⛓️</span>
+    <strong>Client Portals</strong> – Locked gates. Future battlefield.
+  </li>
+</ul>
+  <p class="toolkit-note scroll-reveal delay-3">🪓 I didn’t learn these. I <span class="glow-word">forged</span> them. Every skill a break in the chain.</p>
+</div>
+  </section>
 
-      <div class="toolkit-item">
-        <h3>⚙️ Automation Starter Kit</h3>
-        <p>Zapier + Notion + Google Sheets starter workflow, mapped and explained.</p>
-        <a href="toolkits/automation-kit.zip" class="toolkit-btn" download>Download</a>
-      </div>
-    </section>
-  </main>
-
-  <footer id="contact" class="fade-in">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:ben@writes.hub">ben@writes.hub</a></p>
-    <p>⚔️ Unchained since 2025</p>
-  </footer>
-
-  <script src="script.js"></script>
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="mailto:EMAIL_PLACEHOLDER" class="freelance-badge">🪓 Ready to Forge Your Path</a>
+    <p class="footer-quote">
+  This site isn’t a portfolio. It’s a declaration.<br>
+  I break what binds—and I build what lasts.
+</p>
+    <p class="footer-credit">Unchained since 2025.</p>
+  </div>
+</footer>
 </body>
 </html>
