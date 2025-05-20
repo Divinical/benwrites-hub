@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === TOOLKIT TOGGLE ===
   const isVisible = toolkitReveal.classList.contains("visible");
-  toolkitToggle.textContent = isVisible ? "Close Toolkit" : "Open Toolkit";
+  toolkitToggle.textContent = isVisible ? "Close Blacksite" : "Open Blacksite";
 
   toolkitToggle.addEventListener("click", () => {
     toolkitReveal.classList.toggle("visible");
     toolkitReveal.classList.toggle("hidden");
     const nowVisible = toolkitReveal.classList.contains("visible");
-    toolkitToggle.textContent = nowVisible ? "Close Toolkit" : "Open Toolkit";
+    toolkitToggle.textContent = nowVisible ? "Close Blacksite" : "Open Blacksite";
   });
 
   // === FORGE FORM SUBMIT ===
