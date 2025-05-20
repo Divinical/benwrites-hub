@@ -715,3 +715,22 @@ nav ul li a.active {
     0 0 4px var(--accent-glow);
   font-weight: bold;
 }
+/* === Responsive Patch for Toolkit List on Small Screens === */
+@media (max-width: 635px) {
+  .toolkit-list li {
+    flex-direction: column;
+    align-items: center; /* ✅ fix alignment */
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .toolkit-list li strong {
+    white-space: nowrap;
+    margin-bottom: 0.25rem;
+  }
+
+  .toolkit-list li .desc {
+    display: block;
+    width: 100%;
+  }
+}
