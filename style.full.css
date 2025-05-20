@@ -46,6 +46,9 @@ body {
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
 }
+body.fade-in {
+  opacity: 1;
+}
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
@@ -303,6 +306,20 @@ nav ul li a.active {
 }
 
 /* === PROJECT CARDS === */
+.project-card {
+  background: var(--toolkit-bg);
+  color: var(--toolkit-text);
+  border: 1px solid var(--toolkit-border);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 24px #ffc14d88, 0 8px 24px rgba(0,0,0,0.3);
+}
 
 /* === TOOLKIT === */
 .toolkit-btn {
@@ -331,6 +348,10 @@ nav ul li a.active {
     text-align: center;
   margin: 0 auto;
   max-width: 800px;
+}
+
+.toolkit-reveal.visible {
+  display: block;
 }
 .toolkit-list {
   list-style: none;
@@ -367,6 +388,27 @@ nav ul li a.active {
 .footer-inner {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.footer-tagline {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.footer-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.footer-btn:hover {
+  background: #ff8500;
+  transform: scale(1.03);
 }
 
 .footer-quote {
@@ -409,6 +451,22 @@ nav ul li a.active {
   color: #ff8800;
   text-shadow: 0 0 6px #ffcc8080;
 }
+.project-card {
+  box-shadow: 0 0 20px #ffc14d33;
+  text-align: center;
+}
+.project-card h3,
+.project-card p {
+  text-align: center;
+}
+.flicker-glow {
+  filter: drop-shadow(0 0 12px #ff6b00aa);
+  transition: filter 0.3s ease;
+}
+.theme-bg {
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
+}
 .hidden {
   display: none !important;
 }
@@ -432,6 +490,65 @@ nav ul li a.active {
   margin-top: -1rem;
   margin-bottom: 2rem;
   color: #999;
+}
+
+.forge-log {
+  background: #1b1b1b;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 12px rgba(255, 108, 0, 0.2);
+}
+.log-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: #ff6b00;
+  margin-bottom: 0.5rem;
+}
+.log-list {
+  list-style: none;
+  padding-left: 0;
+}
+.log-list li {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  color: #ddd;
+}
+
+.forge-form {
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 108, 0, 0.15);
+}
+.form-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #ff6b00;
+}
+.form-instructions {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+.forge-form input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #1e1e1e;
+  color: #fff;
+}
+.forge-form .toolkit-btn {
+  width: 100%;
+}
+.forge-note {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.75rem;
+  text-align: center;
 }
 /* === THE FORGE SECTION === */
 .forge-section {
@@ -491,6 +608,10 @@ nav ul li a.active {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.forge-card.fade {
+  animation: fadeOutForge 0.7s ease forwards;
 }
 
 @keyframes fadeOutForge {
@@ -574,12 +695,20 @@ nav ul li a.active {
   }
 }
 
+.page-pop {
+  animation: popIn 0.6s ease forwards;
+}
+
 /* === SCROLL REVEAL ANIMATIONS === */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.6s ease-out;
   will-change: opacity, transform;
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .scroll-reveal.delay-1 { transition-delay: 0.2s; }
 .scroll-reveal.delay-2 { transition-delay: 0.4s; }
@@ -634,6 +763,11 @@ nav ul li a.active {
 .forge-card h3 span {
   display: inline-block;
   animation: glowPulse 2s ease-in-out infinite;
+}
+.emoji-glow {
+  display: inline-block;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+  margin-right: 0.4rem;
 }
 .toolkit-note {
   text-align: center;
