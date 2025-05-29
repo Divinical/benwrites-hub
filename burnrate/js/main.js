@@ -134,19 +134,20 @@ const essentialsInput = document.getElementById('expenses');
 const totalBox = document.getElementById('liveTotalBox');
 
 function updateLiveTotal() {
-    let extraIncome = 0;
+  let extraIncome = 0;
 
-document.querySelectorAll('#custom-income-inputs .group').forEach(group => {
-  const val = parseFloat(group.querySelector('.custom-income')?.value || 0);
-  const recurrence = group.querySelector('.income-recurrence')?.value || 'monthly';
+  document.querySelectorAll('#custom-income-inputs .group').forEach(group => {
+    const val = parseFloat(group.querySelector('.custom-income')?.value || 0);
+    const recurrence = group.querySelector('.income-recurrence')?.value || 'monthly';
 
-  if (!isNaN(val)) {
-    let adjusted = val;
-    if (recurrence === 'weekly') adjusted *= 4;
-    if (recurrence === 'once') adjusted = val;
-    extraIncome += adjusted;
-  }
-});
+    if (!isNaN(val)) {
+      let adjusted = val;
+      if (recurrence === 'weekly') adjusted *= 4;
+      if (recurrence === 'daily') adjusted *= 30;
+      extraIncome += adjusted;
+    }
+  });
+
   const groups = document.querySelectorAll('.group');
   let optionalTotal = 0;
 
@@ -161,19 +162,22 @@ document.querySelectorAll('#custom-income-inputs .group').forEach(group => {
       if (recurrence === 'weekly') monthlyEquivalent *= 4;
       if (recurrence === 'daily') monthlyEquivalent *= 30;
       optionalTotal += monthlyEquivalent;
-      if (breakdown) breakdown.textContent = `${currentCurrency}${val.toFixed(2)} / ${recurrence} → ${currentCurrency}${monthlyEquivalent.toFixed(2)} / month`;
+
+      if (breakdown) {
+        breakdown.textContent = `${currentCurrency}${val.toFixed(2)} / ${recurrence} → ${currentCurrency}${monthlyEquivalent.toFixed(2)} / month`;
+      }
     } else if (breakdown) {
       breakdown.textContent = '';
     }
   });
 
-const essentials = parseFloat(essentialsInput.value) || 0;
-const total = essentials + optionalTotal;
-const effectiveIncome = (parseFloat(incomeInput.value) || 0) + extraIncome;
-const survivalDays = (effectiveIncome / totalExpenses) * 30;
+  const essentials = parseFloat(essentialsInput.value) || 0;
+  const total = essentials + optionalTotal;
+  const effectiveIncome = (parseFloat(incomeInput.value) || 0) + extraIncome;
+
   totalBox.textContent = `Live Total Expenses: ${currentCurrency}${total.toFixed(2)} | Income: ${currentCurrency}${effectiveIncome.toFixed(2)}`;
   totalBox.classList.add("animate-pulse");
-setTimeout(() => totalBox.classList.remove("animate-pulse"), 1000);
+  setTimeout(() => totalBox.classList.remove("animate-pulse"), 1000);
 }
 
 const calculateBtn = document.getElementById('calculate');
