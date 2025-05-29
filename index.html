@@ -1,63 +1,54 @@
+<!-- === PART 1: Head & Meta Configuration === -->
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ForgeHeart | Unchained freelance copywriting and automation projects by Benjamin Boarer." />  
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BurnRate – Survival Calculator</title>
+    <!-- Social Sharing -->
+    <meta property="og:title" content="ForgeHeart – Forged by Fire" />
+    <meta property="og:description" content="Dev portfolio with raw style and unchained polish. See what I'm building next." />
+    <meta property="og:image" content="https://divinical.github.io/forgeheart/assets/og-image.jpg" />
+    <meta property="og:url" content="https://divinical.github.io/forgeheart/" />
+    <meta property="og:type" content="website" />
 
-  <!-- Meta Info -->
-  <meta name="description" content="BurnRate helps you calculate how long you can survive. Track your income, expenses, and burn rate with zero fluff." />
-  <meta name="author" content="BenWritesHUB" />
-  <meta property="og:title" content="BurnRate – Survival Calculator" />
-  <meta property="og:description" content="Track your income, expenses, and burn rate. Built by a solo founder for those living on the edge." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://forgeheart.run/burnrate" />
-  <meta property="og:image" content="https://forgeheart.run/burnrate/og-image.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ForgeHeart – Forged by Fire" />
+    <meta name="twitter:description" content="Dev portfolio with raw style and unchained polish. See what I'm building next." />
+    <meta name="twitter:image" content="https://divinical.github.io/forgeheart/assets/og-image.jpg" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/burnrate/favicon.png" />
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#ff6b00" />
 
-  <!-- Tailwind + CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class'
-    };
-  </script>
+    <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
 
-  <style>
-    .fade-out {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-  </style>
-</head>
+    <!-- Styles & Scripts -->
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="script.js"></script>
 
-<body class="bg-white text-black dark:bg-zinc-950 dark:text-white min-h-screen flex flex-col items-center px-4 py-8 transition-colors duration-300">
-  <header class="mb-8 text-center">
-    <h1 class="text-5xl font-extrabold tracking-tight text-amber-500 dark:text-amber-400 drop-shadow-[0_0_12px_rgba(255,193,7,0.3)]">BurnRate</h1>
-    <p class="text-base text-zinc-600 dark:text-zinc-400 mt-2 italic">Track your runway. Survive the grind.</p>
-    <div class="flex justify-center items-center gap-4 mt-3">
-      <button id="themeToggle" class="text-sm bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 py-2 px-4 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all duration-150">Toggle Theme</button>
-      <label for="currencySelector" class="sr-only">Select your currency</label>
-      <select id="currencySelector"
-        class="text-sm text-zinc-700 dark:text-zinc-200 bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-600 rounded-full px-4 py-2 transition-all duration-150">
-        <option value="£">£ GBP</option>
-        <option value="$">$ USD</option>
-        <option value="€">€ EUR</option>
-        <option value="¥">¥ JPY</option>
-      </select>
-    </div>
-  </header>
+    <title>ForgeHeart – Forged by Fire. Built to Sell.</title>
+  </head>
 
-  <main class="w-full max-w-md space-y-6">
-    <p>🔥 Built to survive. BurnRate now lives at
-  <a href="/burnrate/" target="_self" class="transition-colors duration-300 hover:text-amber-500">
-    forgeheart.run/burnrate
-  </a>
-</p>
-<p class="footnote">🛠️ Built in 1 night by a solo parent on a mission to survive and ship.</p>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about" class="active">Home</a></li>
+        <li><a href="#forge">The Forge</a></li>
+        <li><a href="#toolkit-section">The Blacksite</a></li>
+      </ul>
+      <div class="theme-toggle" title="Toggle dark/light mode">
+        <button aria-label="Toggle Dark Mode" id="darkToggle">🦁</button>
+      </div>
+    </nav>
+
+    <main>
       <header class="hero" id="about">
         <h1 class="hero-title">FORGEHEART</h1>
         <a class="freelance-badge" href="#oathbot-core">📌 🔧 Enter the Forge</a>
@@ -95,17 +86,8 @@
               <li><strong>🧾 Add expenses</strong> by frequency — daily, weekly, monthly</li>
               <li><strong>⏳ See your burn</strong> and how long you’ll last</li>
             </ul>
-<<<<<<< HEAD
-            <p>🛠️ Built to survive. BurnRate now lives at 
-            <a href="/burnrate/" target="_self" class="transition-colors duration-300 hover:text-amber-500">
-              forgeheart.run/burnrate
-            </a>
-            </p>
-            <p class="footnote">🔧 Built in 1 night by a solo parent on a mission to survive and ship.</p>
-=======
             <p>Live now → <a href="https://burnrate.onrender.com" target="_blank">Open BurnRate</a></p>
             <p class="footnote">🛠️ Built in 3 days by a solo parent on a mission to survive and ship.</p>
->>>>>>> parent of 20607de (slight amendment to BurnRate card)
           </div>
 
             <!-- Echoes from the Forge -->
@@ -183,23 +165,13 @@
       </section>
     
 
-    <footer class="text-xs text-zinc-500 text-center mt-8">
-    Built by <a href="https://forgeheart.run" target="_blank" class="underline hover:text-accent">ForgeHeart</a> — Tools for unchained founders.
-  </footer>
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="freelance-badge" href="mailto:benwriteshub@gmail.com">🪓 Ready to Forge Your Path</a>
+        <p class="footer-quote">This site isn't a portfolio. It's a declaration.<br />I break what binds. I build what lasts.</p>
+        <p class="footer-credit">🗝️ Unchained since 2025.</p>
+      </div>
+    </footer>
 
-  <script src="/burnrate/js/main.js"></script>
-  <script>
-    const burnrateLink = document.getElementById("burnrateLink");
-    if (burnrateLink) {
-      burnrateLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.add("fade-out");
-        setTimeout(() => {
-          window.location.href = burnrateLink.href;
-        }, 400);
-      });
-    }
-  </script>
-</body>
-
+  </body>
 </html>
