@@ -170,6 +170,7 @@ document.querySelectorAll('#custom-income-inputs .group').forEach(group => {
 const essentials = parseFloat(essentialsInput.value) || 0;
 const total = essentials + optionalTotal;
 const effectiveIncome = (parseFloat(incomeInput.value) || 0) + extraIncome;
+const survivalDays = (effectiveIncome / totalExpenses) * 30;
   totalBox.textContent = `Live Total Expenses: ${currentCurrency}${total.toFixed(2)} | Income: ${currentCurrency}${effectiveIncome.toFixed(2)}`;
   totalBox.classList.add("animate-pulse");
 setTimeout(() => totalBox.classList.remove("animate-pulse"), 1000);
@@ -230,7 +231,22 @@ function updateResults(survivalDays, essentialsTotal, optionalTotal) {
 }
 
 calculateBtn.addEventListener('click', () => {
-  const income = parseFloat(incomeInput.value);
+  const capital = parseFloat(incomeInput.value) || 0;
+let extraIncome = 0;
+
+document.querySelectorAll('#custom-income-inputs .group').forEach(group => {
+  const val = parseFloat(group.querySelector('.custom-income')?.value || 0);
+  const recurrence = group.querySelector('.income-recurrence')?.value || 'monthly';
+
+  if (!isNaN(val)) {
+    let adjusted = val;
+    if (recurrence === 'weekly') adjusted *= 4;
+    if (recurrence === 'daily') adjusted *= 30;
+    extraIncome += adjusted;
+  }
+});
+
+const effectiveIncome = capital + extraIncome;
   const essentials = parseFloat(essentialsInput.value);
   const optionalExpenses = getOptionalExpenses();
   const optionalTotal = calculateMonthlyTotal(optionalExpenses);
@@ -243,7 +259,7 @@ calculateBtn.addEventListener('click', () => {
     return;
   }
 
-  const survivalDays = (income / totalExpenses) * 30;
+  const survivalDays = (effectiveIncome / totalExpenses) * 30;
   updateResults(survivalDays, essentials, optionalTotal);
 
   const inputs = {
