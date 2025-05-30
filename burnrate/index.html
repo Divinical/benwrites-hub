@@ -30,7 +30,7 @@
 <body class="bg-white text-black dark:bg-zinc-950 dark:text-white min-h-screen flex flex-col items-center px-4 py-8 transition-colors duration-300">
   <header class="mb-8 text-center">
     <h1 class="text-5xl font-extrabold tracking-tight text-amber-500 dark:text-amber-400 drop-shadow-[0_0_12px_rgba(255,193,7,0.3)]">BurnRate</h1>
-    <p class="text-base text-zinc-600 dark:text-zinc-400 mt-2 italic">Track your runway. Survive the grind.</p>
+    <p class="text-base text-zinc-600 dark:text-zinc-400 mt-2 italic">Track your runway. Make every day count.</p>
     <div class="flex justify-center items-center gap-4 mt-3">
       <button id="themeToggle" class="text-sm bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 py-2 px-4 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all duration-150">Toggle Theme</button>
       <label for="currencySelector" class="sr-only">Select your currency</label>
@@ -45,16 +45,14 @@
   </header>
 
   <main class="w-full max-w-md space-y-6">
-<label for="income" class="block text-sm font-semibold text-zinc-700 dark:text-white mb-1 text-center">
-  Available Capital
-</label>
-<p class="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-1">
-  One-time funds to start from
-</p>
-    <div class="relative">
-      <span class="currency-symbol absolute left-3 top-1/2 -translate-y-1/2 font-semibold text-zinc-500 dark:text-zinc-400">£</span>
-      <input id="income" type="number" class="pl-7 w-full rounded-full bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="00.00" />
-    </div>
+<div class="mb-1">
+  <label for="income" class="block text-sm font-semibold text-center text-zinc-700 dark:text-white mb-1">Startup Fuel</label>
+<small class="block text-center text-xs text-zinc-500 dark:text-zinc-400 mb-2">Your firestarter fund. Use it wisely.</small>
+  <div class="relative">
+    <span class="currency-symbol absolute left-3 top-1/2 -translate-y-1/2 font-semibold text-zinc-500 dark:text-zinc-400">£</span>
+    <input id="income" type="number" class="pl-7 w-full rounded-full bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="00.00" />
+  </div>
+</div>
     <button id="toggleIncome" class="w-full mt-4 bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 py-2 px-4 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all duration-150"><h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
   Monthly / Recurring Income
 </h2></button>
@@ -65,11 +63,14 @@
       <button id="addCustomIncome" class="w-full bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 py-2 px-4 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all duration-150">+ Add Custom Income</button>
     </section>
 
-    <label for="expenses" class="block text-sm font-semibold text-zinc-700 dark:text-white mb-1 text-center">Essential Expenses</label>
-    <div class="relative">
-      <span class="currency-symbol absolute left-3 top-1/2 -translate-y-1/2 font-semibold text-zinc-500 dark:text-zinc-400">£</span>
-      <input id="expenses" type="number" class="pl-7 w-full rounded-full bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="00.00" />
-    </div>
+    <div class="mb-4">
+  <label for="expenses" class="block text-sm font-semibold text-center text-zinc-700 dark:text-white mb-1">Core Costs</label>
+  <small class="block text-center text-xs text-zinc-500 dark:text-zinc-400 mb-2">Non-negotiables. What you need to survive.</small>
+  <div class="relative">
+    <span class="currency-symbol absolute left-3 top-1/2 -translate-y-1/2 font-semibold text-zinc-500 dark:text-zinc-400">£</span>
+    <input id="expenses" type="number" class="pl-7 w-full rounded-full bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 px-4 py-2 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="00.00" />
+  </div>
+</div>
 
     <div id="liveTotalBox" class="text-center text-sm text-amber-400 bg-zinc-900 dark:bg-zinc-800 px-4 py-2 rounded-full font-medium shadow-inner shadow-amber-500/10"></div>
     <button id="toggleExtras" class="w-full mt-4 bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 py-2 px-4 rounded-full hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all duration-150">+ Add Optional Expenses</button>

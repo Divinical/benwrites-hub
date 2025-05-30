@@ -60,20 +60,21 @@ function addCustomInput(label = '', amount = '', recurrence = 'monthly') {
   const wrapper = document.createElement('div');
   wrapper.className = 'space-y-2 group';
 
-  wrapper.innerHTML = `
-    <input type="text" maxlength="25" class="custom-label w-full rounded-md bg-zinc-800 border border-zinc-700 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Label e.g. Spotify" value="${label}" />
-    <div class="relative">
-      <span class="currency-symbol absolute left-3 top-1/2 -translate-y-1/2 font-semibold text-zinc-400">${currentCurrency}</span>
-      <input type="number" class="custom-expense pl-7 w-full rounded-md bg-zinc-800 border border-zinc-700 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="00.00" value="${amount}" />
-      <button class="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-zinc-500 hover:text-red-400 delete-expense" title="Remove">✕</button>
-    </div>
-    <select class="recurrence w-full bg-zinc-800 border border-zinc-700 text-sm text-white rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-amber-500">
-      <option value="monthly" ${recurrence === 'monthly' ? 'selected' : ''}>Monthly</option>
-      <option value="weekly" ${recurrence === 'weekly' ? 'selected' : ''}>Weekly</option>
-      <option value="daily" ${recurrence === 'daily' ? 'selected' : ''}>Daily</option>
-    </select>
-    <div class="monthly-breakdown text-xs text-zinc-400 mt-1"></div>
-  `;
+ wrapper.innerHTML = `
+  <input type="text" maxlength="25" class="custom-label w-full rounded-md bg-zinc-800 border border-zinc-700 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Label e.g. Spotify" value="${label}" />
+  <div class="relative">
+    <span class="currency-symbol absolute left-3 top-1/2 -translate-y-1/2 font-semibold text-zinc-400">${currentCurrency}</span>
+    <input type="number" class="custom-expense pl-7 w-full rounded-md bg-zinc-800 border border-zinc-700 px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="00.00" value="${amount}" />
+    <button class="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-zinc-500 hover:text-red-400 delete-expense" title="Remove">✕</button>
+  </div>
+  <select class="recurrence w-full bg-zinc-800 border border-zinc-700 text-sm text-white rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-amber-500">
+    <option value="monthly" ${recurrence === 'monthly' ? 'selected' : ''}>Monthly</option>
+    <option value="weekly" ${recurrence === 'weekly' ? 'selected' : ''}>Weekly</option>
+    <option value="daily" ${recurrence === 'daily' ? 'selected' : ''}>Daily</option>
+    <option value="once" ${recurrence === 'once' ? 'selected' : ''}>One-time</option> <!-- ✅ NEW -->
+  </select>
+  <div class="monthly-breakdown text-xs text-zinc-400 mt-1"></div>
+`;
 
   customInputsContainer.appendChild(wrapper);
 
@@ -160,7 +161,9 @@ function updateLiveTotal() {
     if (!isNaN(val)) {
       let monthlyEquivalent = val;
       if (recurrence === 'weekly') monthlyEquivalent *= 4;
-      if (recurrence === 'daily') monthlyEquivalent *= 30;
+      else if (recurrence === 'daily') monthlyEquivalent *= 30;
+      else if (recurrence === 'once') monthlyEquivalent = val;
+
       optionalTotal += monthlyEquivalent;
 
       if (breakdown) {
@@ -197,7 +200,8 @@ function calculateMonthlyTotal(expenses) {
   return expenses.reduce((acc, item) => {
     let val = item.amount;
     if (item.recurrence === 'weekly') val *= 4;
-    if (item.recurrence === 'daily') val *= 30;
+    else if (item.recurrence === 'daily') val *= 30;
+    else if (item.recurrence === 'once') val = val;
     return acc + val;
   }, 0);
 }
@@ -446,9 +450,12 @@ document.getElementById('exportPDF').addEventListener('click', () => {
 
         let monthly = val;
         if (recurrence === 'weekly') monthly *= 4;
-        if (recurrence === 'daily') monthly *= 30;
+        else if (recurrence === 'daily') monthly *= 30;
+        else if (recurrence === 'once') monthly = val;
 
-        return `<li>${label} — ${currentCurrency}${val.toFixed(2)} / ${recurrence} → <strong>${currentCurrency}${monthly.toFixed(2)}</strong> / month</li>`;
+
+        const isOneTime = recurrence === 'once';
+      return `<li>${label} — ${currentCurrency}${val.toFixed(2)} / ${recurrence} ${!isOneTime ? `→ <strong>${currentCurrency}${monthly.toFixed(2)}</strong> / month` : ''}</li>`;
       }).join('')}
     </ul>
   </div>
