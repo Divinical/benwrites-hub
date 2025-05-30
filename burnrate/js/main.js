@@ -495,7 +495,18 @@ document.getElementById('copySnapshot').addEventListener('click', () => {
 
   const url = `${location.origin}${location.pathname}?${params.toString()}`;
   navigator.clipboard.writeText(url)
-    .then(() => alert("Snapshot link copied to clipboard!"))
+    .then(() => {
+  const toast = document.getElementById('toast');
+  toast.classList.remove('hidden', 'opacity-0');
+  toast.classList.add('opacity-100');
+
+  setTimeout(() => {
+    toast.classList.add('opacity-0');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 300); // match duration
+  }, 2500);
+})
     .catch(err => alert("Failed to copy link."));
 });
 
