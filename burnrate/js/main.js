@@ -260,12 +260,13 @@ const effectiveIncome = capital + extraIncome;
   const optionalTotal = calculateMonthlyTotal(optionalExpenses);
   const totalExpenses = essentials + optionalTotal;
 
-  if (isNaN(income) || isNaN(totalExpenses) || income <= 0) {
-    resultBox.textContent = "Please enter valid numbers.";
-    resultBox.classList.remove("hidden");
-    resultBox.classList.replace("text-emerald-400", "text-red-500");
-    return;
-  }
+  if (totalExpenses <= 0 || effectiveIncome <= 0) {
+  resultBox.textContent = "Please enter valid numbers.";
+  resultBox.classList.remove("hidden");
+  resultBox.classList.replace("text-emerald-400", "text-red-500");
+  return;
+}
+
 
   const survivalDays = (effectiveIncome / totalExpenses) * 30;
   updateResults(survivalDays, essentials, optionalTotal);
